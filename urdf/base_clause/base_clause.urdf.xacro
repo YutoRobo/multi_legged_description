@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find multi_legged_description)/urdf/common.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/base_clause/base_clause.transmission.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/base_clause/base_clause.gazebo.xacro"/>
+
+  <property name="base_clause_radius" value="0.2"/>
+  <property name="base_clause_length" value="0.5"/>
+  <property name="base_clause_mass" value="2.0"/>
+  
+  <xacro:macro name="base_clause" params="prefix parent *joint_origin *joint_axis">
+	<joint name="${prefix}_base_clause_joint" type="continuous">
+	  <insert_block name="joint_origin"/>
+	  <parent link="${parent}"/>
+	  <child link="${prefix}_base_clause_link"/>
+	  <insert_block name="joint_axis"/>
+	</joint>
+	<link name="${prefix}_base_clause_link">
+	  <visual>
+        <geometry>
+            <cylinder radius="${base_clause_radius}" length="${base_clause_length}"/>
+        </geometry>>
+	  </visual>
+	  <collision>
+		<origin xyz="0 -0.003 0" rpy="${-M_PI/2} 0 0"/>
+		<geometry>
+		  <cylinder radius="${base_clause_radius}" length="${base_clause_length}"/>
+		</geometry>
+	  </collision>
+	  <inertial>
+		<origin xyz="0 -0.003 0" rpy="${-M_PI/2} 0 0"/>
+		<cylinder_inertial mass="${base_clause_mass}"
+						   radius="${base_clause_radius}" length="${base_clause_length}"/>
+	  </inertial>
+	</link>
+  </xacro:macro>
+  
+</robot>

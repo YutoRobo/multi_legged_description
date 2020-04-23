@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<robot name="multi_legged_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find multi_legged_description)/urdf/base/base.urdf.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/base_clause/base_clause.urdf.xacro"/>
+
+  <!-- =============== Link & Joint =============== -->
+  <!-- Base -->
+  <link name="base_footprint"/>
+  <xacro:base parent="base_footprint">
+	<origin xyz="0 0 0.20316"/>
+  </xacro:base>
+
+  <!-- RF -->
+  <xacro:base_clause prefix="RF" parent="base_link">
+	<origin xyz="0 -0.214375 0"/>
+	<axis xyz="0 1 0"/>
+  </xacro:base_clause>
+
+  <!-- LF -->
+  <xacro:base_clause prefix="LF" parent="base_link">
+	<origin xyz="0 0.214375 0"/>
+	<axis xyz="0 1 0"/>
+  </xacro:base_clause>
+
+  <!-- ===============  Transmission =============== -->
+  <xacro:base_clause_trans prefix="RF"/>
+  <xacro:base_clause_trans prefix="LF"/>
+
+   <!-- =============== Gazebo =============== -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <!-- <robotNamespace>multi_legged_robot</robotNamespace> -->
+    </plugin>
+  </gazebo>
+
+  <!-- Base -->
+  <xacro:base_gazebo/>
+
+  <!-- base_clause -->
+  <xacro:base_clause_gazebo prefix="RF"/>
+  <xacro:base_clause_gazebo prefix="LF"/>
+  <!-- <xacro:base_clause_gazebo_control rate="25"/> -->
+
+
+</robot>
+
+  
