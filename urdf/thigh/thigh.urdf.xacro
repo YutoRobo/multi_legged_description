@@ -7,7 +7,7 @@
 
   <property name="thigh_radius" value="0.03"/>
   <property name="thigh_length" value="0.2"/>
-  <property name="thigh_mass" value="0.6"/>
+  <property name="thigh_mass" value="0.006"/>
   
   <xacro:macro name="thigh" params="prefix *joint_origin *joint_axis">
 	<joint name="${prefix}_thigh_joint" type="continuous">

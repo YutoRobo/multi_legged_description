@@ -7,10 +7,11 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/tibia/tibia.urdf.xacro"/>
 
   <!-- =============== Link & Joint =============== -->
+
   <!-- Base -->
   <link name="base_footprint"/>
   <xacro:base parent="base_footprint">
-	<origin xyz="0 0 0.20316"/>
+	<origin xyz="0 0 1.0"/>
   </xacro:base>
 
   <!-- LF -->
@@ -126,10 +127,19 @@
   <xacro:thigh_trans prefix="RH"/>
   <xacro:thigh_trans prefix="LH"/>
 
+  <!-- tibia -->
+  <xacro:tibia_trans prefix="RF"/>
+  <xacro:tibia_trans prefix="LF"/>
+  <xacro:tibia_trans prefix="RM"/>
+  <xacro:tibia_trans prefix="LM"/>
+  <xacro:tibia_trans prefix="RH"/>
+  <xacro:tibia_trans prefix="LH"/>
+
    <!-- =============== Gazebo =============== -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <!-- <robotNamespace>multi_legged_robot</robotNamespace> -->
+      <robotNamespace>/multi_legged_robot</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
     </plugin>
   </gazebo>
 
@@ -151,6 +161,15 @@
   <xacro:thigh_gazebo prefix="LM"/>
   <xacro:thigh_gazebo prefix="RH"/>
   <xacro:thigh_gazebo prefix="LH"/>
+
+  <!-- tibia -->
+  <xacro:tibia_gazebo prefix="RF"/>
+  <xacro:tibia_gazebo prefix="LF"/>
+  <xacro:tibia_gazebo prefix="RM"/>
+  <xacro:tibia_gazebo prefix="LM"/>
+  <xacro:tibia_gazebo prefix="RH"/>
+  <xacro:tibia_gazebo prefix="LH"/>
+
   <!-- <xacro:base_clause_gazebo_control rate="25"/> -->
 
 
