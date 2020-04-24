@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find multi_legged_description)/urdf/common.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/tibia/tibia.transmission.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/tibia/tibia.gazebo.xacro"/>
+
+  <property name="tibia_radius" value="0.03"/>
+  <property name="tibia_length" value="0.3"/>
+  <property name="tibia_mass" value="0.6"/>
+  
+  <xacro:macro name="tibia" params="prefix *joint_origin *joint_axis">
+	<joint name="${prefix}_tibia_joint" type="continuous">
+	  <insert_block name="joint_origin"/>
+	  <parent link="${prefix}_thigh_link"/>
+	  <child link="${prefix}_tibia_link"/>
+      <origin xyz="0 -0.003 0" rpy="0 0 0"/>
+	  <insert_block name="joint_axis"/>
+	</joint>
+	<link name="${prefix}_tibia_link">
+	  <visual>
+        <origin xyz="0 -0.003 ${-tibia_length/2}" rpy="0 0 0"/>
+        <geometry>
+            <cylinder radius="${tibia_radius}" length="${tibia_length}"/>
+        </geometry>>
+	  </visual>
+	  <collision>
+		<origin xyz="0 -0.003 ${-tibia_length/2}" rpy="0 0 0"/>
+		<geometry>
+		  <cylinder radius="${tibia_radius}" length="${tibia_length}"/>
+		</geometry>
+	  </collision>
+	  <inertial>
+		<origin xyz="0 -0.003 ${-tibia_length/2}" rpy="0 0 0"/>
+		<cylinder_inertial mass="${tibia_mass}"
+						   radius="${tibia_radius}" length="${tibia_length}"/>
+	  </inertial>
+	</link>
+  </xacro:macro>
+  
+</robot>

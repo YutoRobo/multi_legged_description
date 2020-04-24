@@ -5,31 +5,33 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/base_clause/base_clause.transmission.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/base_clause/base_clause.gazebo.xacro"/>
 
-  <property name="base_clause_radius" value="0.2"/>
-  <property name="base_clause_length" value="0.5"/>
-  <property name="base_clause_mass" value="2.0"/>
+  <property name="base_clause_radius" value="0.03"/>
+  <property name="base_clause_length" value="0.1"/>
+  <property name="base_clause_mass" value="0.3"/>
   
   <xacro:macro name="base_clause" params="prefix parent *joint_origin *joint_axis">
 	<joint name="${prefix}_base_clause_joint" type="continuous">
 	  <insert_block name="joint_origin"/>
 	  <parent link="${parent}"/>
 	  <child link="${prefix}_base_clause_link"/>
+      <origin xyz="0 -0.003 0" rpy="0 0 0"/>
 	  <insert_block name="joint_axis"/>
 	</joint>
 	<link name="${prefix}_base_clause_link">
 	  <visual>
+        <origin xyz="0 -0.003 0" rpy="0 0 0"/>
         <geometry>
             <cylinder radius="${base_clause_radius}" length="${base_clause_length}"/>
         </geometry>>
 	  </visual>
 	  <collision>
-		<origin xyz="0 -0.003 0" rpy="${-M_PI/2} 0 0"/>
+		<origin xyz="0 -0.003 0" rpy="0 0 0"/>
 		<geometry>
 		  <cylinder radius="${base_clause_radius}" length="${base_clause_length}"/>
 		</geometry>
 	  </collision>
 	  <inertial>
-		<origin xyz="0 -0.003 0" rpy="${-M_PI/2} 0 0"/>
+		<origin xyz="0 -0.003 0" rpy="0 0 0"/>
 		<cylinder_inertial mass="${base_clause_mass}"
 						   radius="${base_clause_radius}" length="${base_clause_length}"/>
 	  </inertial>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="tibia_trans" params="prefix">
+	<transmission name="${prefix}_tibia_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}_tibia_joint">
+		<hardwareInterface>VelocityJointInterface</hardwareInterface>
+      </joint>
+	  <actuator name="${prefix}_tibia_motor">
+		<hardwareInterface>VelocityJointInterface</hardwareInterface>
+		<mechanicalReduction>30</mechanicalReduction>
+      </actuator>
+	</transmission>
+  </xacro:macro>
+  
+</robot>
