@@ -3,29 +3,79 @@
 
   <xacro:include filename="$(find multi_legged_description)/urdf/base/base.urdf.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/leg/leg.urdf.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/params.xacro"/>
+  
 
-  <!-- ground -->
-  <!--
-  <link name="world"/>
+  <!-- param -->
+  <!--property name="body_length" value="0.5"/>
+  <property name="body_width" value="0.3"/>
+  <property name="body_height" value="0.15"/>
+  <property name="body_mass" value="5.0"/>
+
+  <property name="base_clause_radius" value="0.03"/>
+  <property name="base_clause_length" value="0.05"/>
+  <property name="base_clause_mass" value="0.1"/>
+
+  <property name="thigh_radius" value="0.03"/>
+  <property name="thigh_length" value="0.2"/>
+  <property name="thigh_mass" value="0.6"/>
+
+  <property name="tibia_radius" value="0.03"/>
+  <property name="tibia_length" value="0.3"/>
+  <property name="tibia_mass" value="0.006"/>
+
+  <property name="appendix_radius" value="0.03"/>
+  <property name="appendix_mass" value="0.05"/-->
+  
+  <!--link name="world"/>
   <joint name="fixed" type="fixed">
     <parent link="world"/>
     <child link="base_footprint"/>
-  </joint>-->
+  </joint-->
 
+  <!-- ===============  Link & Joint =============== -->
   <!-- Base -->
   <link name="base_footprint"/>
-  <xacro:base parent="base_footprint">
+  <xacro:base parent="base_footprint" 
+              length="${body_length}" 
+              width="${body_width}" 
+              height="${body_height}" 
+              mass="${body_mass}">
 	<origin xyz="0 0 1.0"/>
   </xacro:base>
 
   <!-- LEG -->
-  <xacro:leg prefix="LF" parent="base_link" origin_xyz="0.15 0.2 0" origin_rpy="0.0 0.0 ${M_PI/2}"/>
-  <xacro:leg prefix="LM" parent="base_link" origin_xyz="0.0 0.2 0" origin_rpy="0.0 0.0 ${M_PI/2}"/>
-	<xacro:leg prefix="LH" parent="base_link" origin_xyz="-0.15 0.2 0" origin_rpy="0.0 0.0 ${M_PI/2}"/>
+  <xacro:leg prefix="LF" parent="base_link" origin_xyz="0.15 0.2 0" origin_rpy="0.0 0.0 ${M_PI/2}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${LF_base_clause_length}" base_clause_mass="${base_clause_mass}"
+             thigh_radius="${thigh_radius}" thigh_length="${LF_thigh_length}" thigh_mass="${thigh_mass}"
+             tibia_radius="${tibia_radius}" tibia_length="${LF_tibia_length}" tibia_mass="${tibia_mass}"
+             appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
+  <xacro:leg prefix="LM" parent="base_link" origin_xyz="0.0 0.2 0" origin_rpy="0.0 0.0 ${M_PI/2}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${LM_base_clause_length}" base_clause_mass="${base_clause_mass}"
+             thigh_radius="${thigh_radius}" thigh_length="${LM_thigh_length}" thigh_mass="${thigh_mass}"
+             tibia_radius="${tibia_radius}" tibia_length="${LM_tibia_length}" tibia_mass="${tibia_mass}"
+             appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
+	<xacro:leg prefix="LH" parent="base_link" origin_xyz="-0.15 0.2 0" origin_rpy="0.0 0.0 ${M_PI/2}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${LH_base_clause_length}" base_clause_mass="${base_clause_mass}"
+             thigh_radius="${thigh_radius}" thigh_length="${LH_thigh_length}" thigh_mass="${thigh_mass}"
+             tibia_radius="${tibia_radius}" tibia_length="${LH_tibia_length}" tibia_mass="${tibia_mass}"
+             appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
 
-  <xacro:leg prefix="RF" parent="base_link" origin_xyz="0.15 -0.2 0" origin_rpy="0.0 0.0 ${-M_PI/2}"/>
-  <xacro:leg prefix="RM" parent="base_link" origin_xyz="0.0 -0.2 0" origin_rpy="0.0 0.0 ${-M_PI/2}"/>
-	<xacro:leg prefix="RH" parent="base_link" origin_xyz="-0.15 -0.2 0" origin_rpy="0.0 0.0 ${-M_PI/2}"/>
+  <xacro:leg prefix="RF" parent="base_link" origin_xyz="0.15 -0.2 0" origin_rpy="0.0 0.0 ${-M_PI/2}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${RF_base_clause_length}" base_clause_mass="${base_clause_mass}"
+             thigh_radius="${thigh_radius}" thigh_length="${RF_thigh_length}" thigh_mass="${thigh_mass}"
+             tibia_radius="${tibia_radius}" tibia_length="${RF_tibia_length}" tibia_mass="${tibia_mass}"
+             appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
+  <xacro:leg prefix="RM" parent="base_link" origin_xyz="0.0 -0.2 0" origin_rpy="0.0 0.0 ${-M_PI/2}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${RM_base_clause_length}" base_clause_mass="${base_clause_mass}"
+             thigh_radius="${thigh_radius}" thigh_length="${RM_thigh_length}" thigh_mass="${thigh_mass}"
+             tibia_radius="${tibia_radius}" tibia_length="${RM_tibia_length}" tibia_mass="${tibia_mass}"
+             appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
+	<xacro:leg prefix="RH" parent="base_link" origin_xyz="-0.15 -0.2 0" origin_rpy="0.0 0.0 ${-M_PI/2}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${RH_base_clause_length}" base_clause_mass="${base_clause_mass}"
+             thigh_radius="${thigh_radius}" thigh_length="${RH_thigh_length}" thigh_mass="${thigh_mass}"
+             tibia_radius="${tibia_radius}" tibia_length="${RH_tibia_length}" tibia_mass="${tibia_mass}"
+             appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
   
   <!-- =============== Gazebo =============== -->
   <gazebo>

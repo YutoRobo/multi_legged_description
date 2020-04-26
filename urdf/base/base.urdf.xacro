@@ -2,13 +2,8 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find multi_legged_description)/urdf/base/base.gazebo.xacro"/>
-  
-  <property name="body_length" value="0.5"/>
-  <property name="body_width" value="0.3"/>
-  <property name="body_height" value="0.15"/>
-  <property name="body_mass" value="5.0"/>
 
-  <xacro:macro name="base" params="parent *joint_origin">
+  <xacro:macro name="base" params="parent width height length mass *joint_origin">
 	<joint name="base_link_joint" type="fixed">
 	  <insert_block name="joint_origin"/>
 	  <parent link="${parent}"/>
@@ -18,20 +13,20 @@
 	<link name="base_link">
 	  <visual>
         <geometry>
-            <box size="${body_length} ${body_width} ${body_height}"/>
+            <box size="${length} ${width} ${height}"/>
         </geometry>
 	  </visual>
 	  <collision>
         <geometry>
-            <box size="${body_length} ${body_width} ${body_height}"/>
+            <box size="${length} ${width} ${height}"/>
         </geometry>
 	  </collision>
 	  <inertial>
-		<mass value="${body_mass}"/>
+		<mass value="${mass}"/>
 		<inertia
-			ixx="${body_mass / 12.0 * (body_width * body_width + body_height * body_height)}" ixy="0.0" ixz="0.0"
-			iyy="${body_mass / 12.0 * (body_height * body_height + body_length * body_length)}" iyz="0.0"
-			izz="${body_mass / 12.0 * (body_length * body_length + body_width * body_width)}"/>
+			ixx="${mass / 12.0 * (width * width + height * height)}" ixy="0.0" ixz="0.0"
+			iyy="${mass / 12.0 * (height * height + length * length)}" iyz="0.0"
+			izz="${mass / 12.0 * (length * length + width * width)}"/>
 	  </inertial>
 	</link>
   </xacro:macro>

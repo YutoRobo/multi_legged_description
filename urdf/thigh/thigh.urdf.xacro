@@ -4,12 +4,8 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/common.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/thigh/thigh.transmission.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/thigh/thigh.gazebo.xacro"/>
-
-  <property name="thigh_radius" value="0.03"/>
-  <property name="thigh_length" value="0.2"/>
-  <property name="thigh_mass" value="0.6"/>
   
-  <xacro:macro name="thigh" params="prefix *joint_origin *joint_axis">
+  <xacro:macro name="thigh" params="prefix radius length mass *joint_origin *joint_axis">
 	<joint name="${prefix}_thigh_joint" type="continuous">
 	  <insert_block name="joint_origin"/>
 	  <parent link="${prefix}_base_clause_link"/>
@@ -19,21 +15,21 @@
 	</joint>
 	<link name="${prefix}_thigh_link">
 	  <visual>
-        <origin xyz="0 0 ${-thigh_length/2}" rpy="0 0 0"/>
+        <origin xyz="0 0 ${-length/2}" rpy="0 0 0"/>
         <geometry>
-            <cylinder radius="${thigh_radius}" length="${thigh_length}"/>
+            <cylinder radius="${radius}" length="${length}"/>
         </geometry>>
 	  </visual>
 	  <collision>
-		<origin xyz="0 0 ${-thigh_length/2}" rpy="0 0 0"/>
+		<origin xyz="0 0 ${-length/2}" rpy="0 0 0"/>
 		<geometry>
-		  <cylinder radius="${thigh_radius}" length="${thigh_length}"/>
+		  <cylinder radius="${radius}" length="${length}"/>
 		</geometry>
 	  </collision>
 	  <inertial>
-		<origin xyz="0 0 ${-thigh_length/2}" rpy="0 0 0"/>
-		<cylinder_inertial mass="${thigh_mass}"
-						   radius="${thigh_radius}" length="${thigh_length}"/>
+		<origin xyz="0 0 ${-length/2}" rpy="0 0 0"/>
+		<cylinder_inertial mass="${mass}"
+						   radius="${radius}" length="${length}"/>
 	  </inertial>
 	</link>
   </xacro:macro>

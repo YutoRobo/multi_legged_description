@@ -6,28 +6,43 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/tibia/tibia.urdf.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/appendix/appendix.urdf.xacro"/>
 
-  <xacro:macro name="leg" params="prefix parent origin_xyz origin_rpy">
+  <xacro:macro name="leg" params="prefix parent origin_xyz origin_rpy 
+                                  base_clause_radius base_clause_length base_clause_mass
+                                  thigh_radius thigh_length thigh_mass
+                                  tibia_radius tibia_length tibia_mass
+                                  appendix_radius appendix_mass">
     <!-- ===============  Link & Joint =============== -->
     <!-- 基節 -->
-    <xacro:base_clause prefix="${prefix}" parent="${parent}">
+    <xacro:base_clause prefix="${prefix}" parent="${parent}" 
+                                          radius="${base_clause_radius}"
+                                          length="${base_clause_length}"
+                                          mass="${base_clause_mass}">
     <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
     <axis xyz="0 0 1"/>
     </xacro:base_clause>
 
     <!-- 腿節 -->
-    <xacro:thigh prefix="${prefix}">
+    <xacro:thigh prefix="${prefix}"
+                 radius="${thigh_radius}"
+                 length="${thigh_length}"
+                 mass="${thigh_mass}">
     <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-M_PI/2} 0.0"/>
     <axis xyz="0 1 0"/>
     </xacro:thigh>
 
     <!-- 脛節 -->
-    <xacro:tibia prefix="${prefix}">
+    <xacro:tibia prefix="${prefix}"
+                 radius="${tibia_radius}"
+                 length="${tibia_length}"
+                 mass="${tibia_mass}">
     <origin xyz="0.0 0.0 ${-thigh_length}" rpy="0.0 ${M_PI/2} 0.0"/>
     <axis xyz="0 1 0"/>
     </xacro:tibia>
 
     <!-- 附節 -->
-    <xacro:appendix prefix="${prefix}">
+    <xacro:appendix prefix="${prefix}"
+                    radius="${appendix_radius}"
+                    mass="${appendix_mass}">
     <origin xyz="0.0 0.0 ${-tibia_length}" rpy="0.0 0.0 0.0"/>
     </xacro:appendix>
 

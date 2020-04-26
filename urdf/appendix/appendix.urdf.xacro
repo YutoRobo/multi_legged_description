@@ -4,10 +4,7 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/common.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/appendix/appendix.gazebo.xacro"/>
 
-  <property name="appendix_radius" value="0.03"/>
-  <property name="appendix_mass" value="0.05"/>
-
-  <xacro:macro name="appendix" params="prefix *joint_origin">
+  <xacro:macro name="appendix" params="prefix radius mass *joint_origin">
 	<joint name="${prefix}_appendix_joint" type="fixed">
 	  <insert_block name="joint_origin"/>
 	  <parent link="${prefix}_tibia_link"/>
@@ -19,22 +16,22 @@
 	  <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-            <sphere radius="${appendix_radius}"/>
+            <sphere radius="${radius}"/>
         </geometry>>
 	  </visual>
 	  <collision>
 		<origin xyz="0 0 0" rpy="0 0 0"/>
 		<geometry>
-		  <sphere radius="${appendix_radius}"/>
+		  <sphere radius="${radius}"/>
 		</geometry>
 	  </collision>
 	  <inertial>
 		<origin xyz="0 0 0" rpy="0 0 0"/>
-        <mass value="${appendix_mass}"/>
+        <mass value="${mass}"/>
 		<inertia
-			ixx="${0.4 * appendix_mass * appendix_radius * appendix_radius}" ixy="0.0" ixz="0.0"
-			iyy="${0.4 * appendix_mass * appendix_radius * appendix_radius}" iyz="0.0"
-			izz="${0.4 * appendix_mass * appendix_radius * appendix_radius}"/>
+			ixx="${0.4 * mass * radius * radius}" ixy="0.0" ixz="0.0"
+			iyy="${0.4 * mass * radius * radius}" iyz="0.0"
+			izz="${0.4 * mass * radius * radius}"/>
       </inertial>
 	</link>
   </xacro:macro>
