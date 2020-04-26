@@ -14,24 +14,24 @@
 	  <insert_block name="joint_origin"/>
 	  <parent link="${prefix}_base_clause_link"/>
 	  <child link="${prefix}_thigh_link"/>
-      <origin xyz="0 -0.003 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
 	  <insert_block name="joint_axis"/>
 	</joint>
 	<link name="${prefix}_thigh_link">
 	  <visual>
-        <origin xyz="0 -0.003 ${-thigh_length/2}" rpy="0 0 0"/>
+        <origin xyz="0 0 ${-thigh_length/2}" rpy="0 0 0"/>
         <geometry>
             <cylinder radius="${thigh_radius}" length="${thigh_length}"/>
         </geometry>>
 	  </visual>
 	  <collision>
-		<origin xyz="0 -0.003 ${-thigh_length/2}" rpy="0 0 0"/>
+		<origin xyz="0 0 ${-thigh_length/2}" rpy="0 0 0"/>
 		<geometry>
 		  <cylinder radius="${thigh_radius}" length="${thigh_length}"/>
 		</geometry>
 	  </collision>
 	  <inertial>
-		<origin xyz="0 -0.003 ${-thigh_length/2}" rpy="0 0 0"/>
+		<origin xyz="0 0 ${-thigh_length/2}" rpy="0 0 0"/>
 		<cylinder_inertial mass="${thigh_mass}"
 						   radius="${thigh_radius}" length="${thigh_length}"/>
 	  </inertial>

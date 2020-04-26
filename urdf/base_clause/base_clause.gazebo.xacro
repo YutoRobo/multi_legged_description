@@ -4,8 +4,9 @@
   <xacro:macro name="base_clause_gazebo" params="prefix">
 	<gazebo reference="${prefix}_base_clause_link">
 	  <selfCollide>false</selfCollide>
-      <mu1 value="0.8" />
-      <mu2 value="0.8" />
+      <mu1 value="0.4" />
+      <mu2 value="0.4" />
+      <material>Gazebo/Blue</material>
     </gazebo>
   </xacro:macro>
 </robot>

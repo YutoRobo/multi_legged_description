@@ -4,22 +4,32 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/base_clause/base_clause.urdf.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/thigh/thigh.urdf.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/tibia/tibia.urdf.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/appendix/appendix.urdf.xacro"/>
 
   <xacro:macro name="leg" params="prefix parent origin_xyz origin_rpy">
+    <!-- ===============  Link & Joint =============== -->
+    <!-- 基節 -->
     <xacro:base_clause prefix="${prefix}" parent="${parent}">
     <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
     <axis xyz="0 0 1"/>
     </xacro:base_clause>
 
+    <!-- 腿節 -->
     <xacro:thigh prefix="${prefix}">
     <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-M_PI/2} 0.0"/>
     <axis xyz="0 1 0"/>
     </xacro:thigh>
 
+    <!-- 脛節 -->
     <xacro:tibia prefix="${prefix}">
     <origin xyz="0.0 0.0 ${-thigh_length}" rpy="0.0 ${M_PI/2} 0.0"/>
     <axis xyz="0 1 0"/>
     </xacro:tibia>
+
+    <!-- 附節 -->
+    <xacro:appendix prefix="${prefix}">
+    <origin xyz="0.0 0.0 ${-tibia_length}" rpy="0.0 0.0 0.0"/>
+    </xacro:appendix>
 
     <!-- ===============  Transmission =============== -->
     <xacro:base_clause_trans prefix="${prefix}"/>
@@ -30,6 +40,7 @@
     <xacro:base_clause_gazebo prefix="${prefix}"/>
     <xacro:thigh_gazebo prefix="${prefix}"/>
     <xacro:tibia_gazebo prefix="${prefix}"/>
+    <xacro:appendix_gazebo prefix="${prefix}"/>
 
   </xacro:macro>
 </robot>

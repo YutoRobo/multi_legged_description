@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find multi_legged_description)/urdf/common.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/appendix/appendix.gazebo.xacro"/>
+
+  <property name="appendix_radius" value="0.03"/>
+  <property name="appendix_mass" value="0.05"/>
+
+  <xacro:macro name="appendix" params="prefix *joint_origin">
+	<joint name="${prefix}_appendix_joint" type="fixed">
+	  <insert_block name="joint_origin"/>
+	  <parent link="${prefix}_tibia_link"/>
+	  <child link="${prefix}_appendix_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+	</joint>
+
+	<link name="${prefix}_appendix_link">
+	  <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <sphere radius="${appendix_radius}"/>
+        </geometry>>
+	  </visual>
+	  <collision>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<geometry>
+		  <sphere radius="${appendix_radius}"/>
+		</geometry>
+	  </collision>
+	  <inertial>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="${appendix_mass}"/>
+		<inertia
+			ixx="${0.4 * appendix_mass * appendix_radius * appendix_radius}" ixy="0.0" ixz="0.0"
+			iyy="${0.4 * appendix_mass * appendix_radius * appendix_radius}" iyz="0.0"
+			izz="${0.4 * appendix_mass * appendix_radius * appendix_radius}"/>
+      </inertial>
+	</link>
+  </xacro:macro>
+  
+</robot>

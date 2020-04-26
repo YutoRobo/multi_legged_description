@@ -5,6 +5,7 @@
 	  <selfCollide>false</selfCollide>
       <mu1 value="0.3" />
       <mu2 value="0.3" />
-    </gazebo>
+      <material>Gazebo/Black</material>
+  </gazebo>
   </xacro:macro>
 </robot>
