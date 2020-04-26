@@ -7,7 +7,7 @@
 
   <property name="thigh_radius" value="0.03"/>
   <property name="thigh_length" value="0.2"/>
-  <property name="thigh_mass" value="0.006"/>
+  <property name="thigh_mass" value="0.6"/>
   
   <xacro:macro name="thigh" params="prefix *joint_origin *joint_axis">
 	<joint name="${prefix}_thigh_joint" type="continuous">
@@ -27,7 +27,7 @@
 	  <collision>
 		<origin xyz="0 -0.003 ${-thigh_length/2}" rpy="0 0 0"/>
 		<geometry>
-		  <cylinder radius="${thigh_radius}" length="${thigh_length/2}"/>
+		  <cylinder radius="${thigh_radius}" length="${thigh_length}"/>
 		</geometry>
 	  </collision>
 	  <inertial>

@@ -2,11 +2,15 @@
 <robot name="multi_legged_robot" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find multi_legged_description)/urdf/base/base.urdf.xacro"/>
-  <xacro:include filename="$(find multi_legged_description)/urdf/base_clause/base_clause.urdf.xacro"/>
-  <xacro:include filename="$(find multi_legged_description)/urdf/thigh/thigh.urdf.xacro"/>
-  <xacro:include filename="$(find multi_legged_description)/urdf/tibia/tibia.urdf.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/leg/leg.urdf.xacro"/>
 
-  <!-- =============== Link & Joint =============== -->
+  <!-- ground -->
+  <!--
+  <link name="world"/>
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_footprint"/>
+  </joint>-->
 
   <!-- Base -->
   <link name="base_footprint"/>
@@ -14,128 +18,16 @@
 	<origin xyz="0 0 1.0"/>
   </xacro:base>
 
-  <!-- LF -->
-  <xacro:base_clause prefix="LF" parent="base_link">
-	<origin xyz="0.15 0.2 0" rpy="0.0 0.0 ${M_PI/2}"/>
-	<axis xyz="0 0 1"/>
-  </xacro:base_clause>
+  <!-- LEG -->
+  <xacro:leg prefix="LF" parent="base_link" origin_xyz="0.15 0.2 0" origin_rpy="0.0 0.0 ${M_PI/2}"/>
+  <xacro:leg prefix="LM" parent="base_link" origin_xyz="0.0 0.2 0" origin_rpy="0.0 0.0 ${M_PI/2}"/>
+	<xacro:leg prefix="LH" parent="base_link" origin_xyz="-0.15 0.2 0" origin_rpy="0.0 0.0 ${M_PI/2}"/>
 
-  <xacro:thigh prefix="LF">
-  <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-M_PI/2} 0.0"/>
-	<axis xyz="0 1 0"/>
-  </xacro:thigh>
-
-  <xacro:tibia prefix="LF">
-  <origin xyz="0.0 0.0 ${-thigh_length}" rpy="0.0 ${M_PI/2} 0.0"/>
-	<axis xyz="0 1 0"/>
-  </xacro:tibia>
-
-  <!-- LM -->
-  <xacro:base_clause prefix="LM" parent="base_link">
-	<origin xyz="0 0.2 0" rpy="0.0 0.0 ${M_PI/2}"/>
-	<axis xyz="0 0 1"/>
-  </xacro:base_clause>
-
-  <xacro:thigh prefix="LM">
-  <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-M_PI/2} 0.0"/>
-	<axis xyz="0 1 0"/>
-  </xacro:thigh>
-
-  <xacro:tibia prefix="LM">
-  <origin xyz="0.0 0.0 ${-thigh_length}" rpy="0.0 ${M_PI/2} 0.0"/>
-	<axis xyz="0 1 0"/>
-  </xacro:tibia>
-
-  <!-- LH -->
-  <xacro:base_clause prefix="LH" parent="base_link">
-	<origin xyz="-0.15 0.2 0" rpy="0.0 0.0 ${M_PI/2}"/>
-	<axis xyz="0 0 1"/>
-  </xacro:base_clause>
-
-  <xacro:thigh prefix="LH">
-  <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-M_PI/2} 0.0"/>
-	<axis xyz="0 1 0"/>
-  </xacro:thigh>
-
-  <xacro:tibia prefix="LH">
-  <origin xyz="0.0 0.0 ${-thigh_length}" rpy="0.0 ${M_PI/2} 0.0"/>
-	<axis xyz="0 1 0"/>
-  </xacro:tibia>
-
-  <!-- RF -->
-  <xacro:base_clause prefix="RF" parent="base_link">
-	<origin xyz="0.15 -0.2 0" rpy="0.0 0.0 ${-M_PI/2}"/>
-	<axis xyz="0 0 1"/>
-  </xacro:base_clause>
+  <xacro:leg prefix="RF" parent="base_link" origin_xyz="0.15 -0.2 0" origin_rpy="0.0 0.0 ${-M_PI/2}"/>
+  <xacro:leg prefix="RM" parent="base_link" origin_xyz="0.0 -0.2 0" origin_rpy="0.0 0.0 ${-M_PI/2}"/>
+	<xacro:leg prefix="RH" parent="base_link" origin_xyz="-0.15 -0.2 0" origin_rpy="0.0 0.0 ${-M_PI/2}"/>
   
-  <xacro:thigh prefix="RF">
-  <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-M_PI/2} 0.0"/>
-	<axis xyz="0 1 0"/>
-  </xacro:thigh>
-
-  <xacro:tibia prefix="RF">
-  <origin xyz="0.0 0.0 ${-thigh_length}" rpy="0.0 ${M_PI/2} 0.0"/>
-	<axis xyz="0 1 0"/>
-  </xacro:tibia>
-
-  <!-- RM -->
-  <xacro:base_clause prefix="RM" parent="base_link">
-	<origin xyz="0 -0.2 0" rpy="0.0 0.0 ${-M_PI/2}"/>
-	<axis xyz="0 0 1"/>
-  </xacro:base_clause>
-
-  <xacro:thigh prefix="RM">
-  <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-M_PI/2} 0.0"/>
-	<axis xyz="0 1 0"/>
-  </xacro:thigh>
-
-  <xacro:tibia prefix="RM">
-  <origin xyz="0.0 0.0 ${-thigh_length}" rpy="0.0 ${M_PI/2} 0.0"/>
-	<axis xyz="0 1 0"/>
-  </xacro:tibia>
-
-  <!-- RH -->
-  <xacro:base_clause prefix="RH" parent="base_link">
-	<origin xyz="-0.15 -0.2 0" rpy="0.0 0.0 ${-M_PI/2}"/>
-	<axis xyz="0 0 1"/>
-  </xacro:base_clause>
-
-  <xacro:thigh prefix="RH">
-  <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-M_PI/2} 0.0"/>
-	<axis xyz="0 1 0"/>
-  </xacro:thigh>
-
-  <xacro:tibia prefix="RH">
-  <origin xyz="0.0 0.0 ${-thigh_length}" rpy="0.0 ${M_PI/2} 0.0"/>
-	<axis xyz="0 1 0"/>
-  </xacro:tibia>
-
-  <!-- ===============  Transmission =============== -->
-  <!-- base_clause -->
-  <xacro:base_clause_trans prefix="RF"/>
-  <xacro:base_clause_trans prefix="LF"/>
-  <xacro:base_clause_trans prefix="RM"/>
-  <xacro:base_clause_trans prefix="LM"/>
-  <xacro:base_clause_trans prefix="RH"/>
-  <xacro:base_clause_trans prefix="LH"/>
-
-  <!-- thigh -->
-  <xacro:thigh_trans prefix="RF"/>
-  <xacro:thigh_trans prefix="LF"/>
-  <xacro:thigh_trans prefix="RM"/>
-  <xacro:thigh_trans prefix="LM"/>
-  <xacro:thigh_trans prefix="RH"/>
-  <xacro:thigh_trans prefix="LH"/>
-
-  <!-- tibia -->
-  <xacro:tibia_trans prefix="RF"/>
-  <xacro:tibia_trans prefix="LF"/>
-  <xacro:tibia_trans prefix="RM"/>
-  <xacro:tibia_trans prefix="LM"/>
-  <xacro:tibia_trans prefix="RH"/>
-  <xacro:tibia_trans prefix="LH"/>
-
-   <!-- =============== Gazebo =============== -->
+  <!-- =============== Gazebo =============== -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/multi_legged_robot</robotNamespace>
@@ -145,30 +37,6 @@
 
   <!-- Base -->
   <xacro:base_gazebo/>
-
-  <!-- base_clause -->
-  <xacro:base_clause_gazebo prefix="RF"/>
-  <xacro:base_clause_gazebo prefix="LF"/>
-  <xacro:base_clause_gazebo prefix="RM"/>
-  <xacro:base_clause_gazebo prefix="LM"/>
-  <xacro:base_clause_gazebo prefix="RH"/>
-  <xacro:base_clause_gazebo prefix="LH"/>
-
-  <!-- thigh -->
-  <xacro:thigh_gazebo prefix="RF"/>
-  <xacro:thigh_gazebo prefix="LF"/>
-  <xacro:thigh_gazebo prefix="RM"/>
-  <xacro:thigh_gazebo prefix="LM"/>
-  <xacro:thigh_gazebo prefix="RH"/>
-  <xacro:thigh_gazebo prefix="LH"/>
-
-  <!-- tibia -->
-  <xacro:tibia_gazebo prefix="RF"/>
-  <xacro:tibia_gazebo prefix="LF"/>
-  <xacro:tibia_gazebo prefix="RM"/>
-  <xacro:tibia_gazebo prefix="LM"/>
-  <xacro:tibia_gazebo prefix="RH"/>
-  <xacro:tibia_gazebo prefix="LH"/>
 
   <!-- <xacro:base_clause_gazebo_control rate="25"/> -->
 

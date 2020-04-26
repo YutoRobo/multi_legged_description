@@ -7,7 +7,7 @@
 
   <property name="base_clause_radius" value="0.03"/>
   <property name="base_clause_length" value="0.05"/>
-  <property name="base_clause_mass" value="0.001"/>
+  <property name="base_clause_mass" value="0.1"/>
   
   <xacro:macro name="base_clause" params="prefix parent *joint_origin *joint_axis">
 	<joint name="${prefix}_base_clause_joint" type="continuous">
