@@ -10,10 +10,10 @@
   <!-- length -->
   <property name="LF_base_clause_length" value="0.05"/>
   <property name="LF_thigh_length" value="0.2"/>
-  <property name="LF_tibia_length" value="0.35"/>
+  <property name="LF_tibia_length" value="0.3"/>
   <property name="RF_base_clause_length" value="0.05"/>
   <property name="RF_thigh_length" value="0.2"/>
-  <property name="RF_tibia_length" value="0.35"/>
+  <property name="RF_tibia_length" value="0.3"/>
 
   <property name="LM_base_clause_length" value="0.05"/>
   <property name="LM_thigh_length" value="0.2"/>
@@ -24,10 +24,10 @@
 
   <property name="LH_base_clause_length" value="0.05"/>
   <property name="LH_thigh_length" value="0.2"/>
-  <property name="LH_tibia_length" value="0.4"/>
+  <property name="LH_tibia_length" value="0.3"/>
   <property name="RH_base_clause_length" value="0.05"/>
   <property name="RH_thigh_length" value="0.2"/>
-  <property name="RH_tibia_length" value="0.4"/>
+  <property name="RH_tibia_length" value="0.3"/>
   
   <!-- radius -->
   <property name="base_clause_radius" value="0.03"/>
