@@ -50,6 +50,7 @@
     <xacro:base_clause_trans prefix="${prefix}"/>
     <xacro:thigh_trans prefix="${prefix}"/>
     <xacro:tibia_trans prefix="${prefix}"/>
+    <!--xacro:appendix_trans prefix="${prefix}"/>-->
 
     <!-- =============== Gazebo =============== -->
     <xacro:base_clause_gazebo prefix="${prefix}"/>
