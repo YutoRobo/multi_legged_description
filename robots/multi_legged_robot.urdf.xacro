@@ -5,28 +5,6 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/leg/leg.urdf.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/params.xacro"/>
   
-
-  <!-- param -->
-  <!--property name="body_length" value="0.5"/>
-  <property name="body_width" value="0.3"/>
-  <property name="body_height" value="0.15"/>
-  <property name="body_mass" value="5.0"/>
-
-  <property name="base_clause_radius" value="0.03"/>
-  <property name="base_clause_length" value="0.05"/>
-  <property name="base_clause_mass" value="0.1"/>
-
-  <property name="thigh_radius" value="0.03"/>
-  <property name="thigh_length" value="0.2"/>
-  <property name="thigh_mass" value="0.6"/>
-
-  <property name="tibia_radius" value="0.03"/>
-  <property name="tibia_length" value="0.3"/>
-  <property name="tibia_mass" value="0.006"/>
-
-  <property name="appendix_radius" value="0.03"/>
-  <property name="appendix_mass" value="0.05"/-->
-  
   <!--link name="world"/>
   <joint name="fixed" type="fixed">
     <parent link="world"/>
@@ -41,7 +19,7 @@
               width="${body_width}" 
               height="${body_height}" 
               mass="${body_mass}">
-	<origin xyz="0 0 1.0"/>
+	<origin xyz="0 0 0.4"/>
   </xacro:base>
 
   <!-- LEG -->

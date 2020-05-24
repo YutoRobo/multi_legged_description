@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find multi_legged_description)/urdf/common.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/appendix/appendix.transmission.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/appendix/appendix.gazebo.xacro"/>
 
   <xacro:macro name="appendix" params="prefix radius mass *joint_origin">
@@ -19,7 +20,7 @@
             <sphere radius="${radius}"/>
         </geometry>>
 	  </visual>
-	  <collision>
+	  <collision name="${prefix}_appendix_collision">
 		<origin xyz="0 0 0" rpy="0 0 0"/>
 		<geometry>
 		  <sphere radius="${radius}"/>
