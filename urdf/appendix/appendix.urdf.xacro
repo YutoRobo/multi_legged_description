@@ -5,12 +5,14 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/appendix/appendix.transmission.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/appendix/appendix.gazebo.xacro"/>
 
-  <xacro:macro name="appendix" params="prefix radius mass *joint_origin">
-	<joint name="${prefix}_appendix_joint" type="fixed">
+  <xacro:macro name="appendix" params="prefix radius mass *joint_origin *joint_axis">
+	<joint name="${prefix}_appendix_joint" type="revolute">
 	  <insert_block name="joint_origin"/>
 	  <parent link="${prefix}_tibia_link"/>
 	  <child link="${prefix}_appendix_link"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
+	  <limit lower="-0.0" upper="0.0" effort="100" velocity="100" />
+	  <insert_block name="joint_axis"/>
 	</joint>
 
 	<link name="${prefix}_appendix_link">
@@ -20,7 +22,7 @@
             <sphere radius="${radius}"/>
         </geometry>>
 	  </visual>
-	  <collision name="${prefix}_appendix_collision">
+	  <collision>
 		<origin xyz="0 0 0" rpy="0 0 0"/>
 		<geometry>
 		  <sphere radius="${radius}"/>

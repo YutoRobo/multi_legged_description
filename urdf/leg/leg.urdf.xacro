@@ -7,50 +7,53 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/appendix/appendix.urdf.xacro"/>
 
   <xacro:macro name="leg" params="prefix parent origin_xyz origin_rpy 
-                                  base_clause_radius base_clause_length base_clause_mass
-                                  thigh_radius thigh_length thigh_mass
-                                  tibia_radius tibia_length tibia_mass
+                                  base_clause_radius base_clause_length base_clause_mass base_clause_torque base_clause_velocity
+                                  thigh_radius thigh_length thigh_mass thigh_torque thigh_velocity
+                                  tibia_radius tibia_length tibia_mass tibia_torque tibia_velocity
                                   appendix_radius appendix_mass">
     <!-- ===============  Link & Joint =============== -->
-    <!-- 基節 -->
     <xacro:base_clause prefix="${prefix}" parent="${parent}" 
                                           radius="${base_clause_radius}"
                                           length="${base_clause_length}"
-                                          mass="${base_clause_mass}">
+                                          mass="${base_clause_mass}"
+                                          torque="${base_clause_torque}"
+                                          velocity="${base_clause_velocity}">
     <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="1 0 0"/>
     </xacro:base_clause>
 
-    <!-- 腿節 -->
     <xacro:thigh prefix="${prefix}"
                  radius="${thigh_radius}"
                  length="${thigh_length}"
-                 mass="${thigh_mass}">
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-M_PI/2} 0.0"/>
+                 mass="${thigh_mass}"
+                 torque="${thigh_torque}"
+                 velocity="${thigh_velocity}">
+    <origin xyz="0.0 0.0 ${-base_clause_length}" rpy="0.0 0.0 0.0"/>
     <axis xyz="0 1 0"/>
     </xacro:thigh>
 
-    <!-- 脛節 -->
     <xacro:tibia prefix="${prefix}"
                  radius="${tibia_radius}"
                  length="${tibia_length}"
-                 mass="${tibia_mass}">
+                 mass="${tibia_mass}"
+                 torque="${tibia_torque}"
+                 velocity="${tibia_velocity}">
     <origin xyz="0.0 0.0 ${-thigh_length}" rpy="0.0 ${M_PI/2} 0.0"/>
     <axis xyz="0 1 0"/>
     </xacro:tibia>
 
-    <!-- 附節 -->
     <xacro:appendix prefix="${prefix}"
                     radius="${appendix_radius}"
                     mass="${appendix_mass}">
     <origin xyz="0.0 0.0 ${-tibia_length}" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0 1 0"/>
     </xacro:appendix>
 
     <!-- ===============  Transmission =============== -->
     <xacro:base_clause_trans prefix="${prefix}"/>
     <xacro:thigh_trans prefix="${prefix}"/>
     <xacro:tibia_trans prefix="${prefix}"/>
-    <!--xacro:appendix_trans prefix="${prefix}"/>-->
+    <xacro:appendix_trans prefix="${prefix}"/>
 
     <!-- =============== Gazebo =============== -->
     <xacro:base_clause_gazebo prefix="${prefix}"/>

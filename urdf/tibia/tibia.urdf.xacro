@@ -5,12 +5,13 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/tibia/tibia.transmission.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/tibia/tibia.gazebo.xacro"/>
   
-  <xacro:macro name="tibia" params="prefix radius length mass *joint_origin *joint_axis">
-	<joint name="${prefix}_tibia_joint" type="continuous">
+  <xacro:macro name="tibia" params="prefix radius length mass torque velocity *joint_origin *joint_axis">
+	<joint name="${prefix}_tibia_joint" type="revolute">
 	  <insert_block name="joint_origin"/>
 	  <parent link="${prefix}_thigh_link"/>
 	  <child link="${prefix}_tibia_link"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
+	  <limit lower="-180.0" upper="180.0" effort="${torque}" velocity="${velocity}" />
 	  <insert_block name="joint_axis"/>
 	</joint>
 	<link name="${prefix}_tibia_link">

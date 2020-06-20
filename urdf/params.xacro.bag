@@ -1,39 +1,57 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- ===============  Body params =============== -->
   <property name="body_length" value="0.175"/>
   <property name="body_width" value="0.125"/>
   <property name="body_height" value="0.005"/>
   <property name="body_mass" value="0.906"/>
+
+  <!-- ===============  Leg params =============== -->
+  <!-- length -->
   <property name="LF_base_clause_length" value="0.04"/>
   <property name="LF_thigh_length" value="0.072"/>
   <property name="LF_tibia_length" value="0.11"/>
   <property name="RF_base_clause_length" value="0.04"/>
   <property name="RF_thigh_length" value="0.072"/>
   <property name="RF_tibia_length" value="0.11"/>
+
   <property name="LM_base_clause_length" value="0.04"/>
   <property name="LM_thigh_length" value="0.072"/>
   <property name="LM_tibia_length" value="0.11"/>
   <property name="RM_base_clause_length" value="0.04"/>
   <property name="RM_thigh_length" value="0.072"/>
   <property name="RM_tibia_length" value="0.11"/>
+
   <property name="LH_base_clause_length" value="0.04"/>
   <property name="LH_thigh_length" value="0.072"/>
   <property name="LH_tibia_length" value="0.11"/>
   <property name="RH_base_clause_length" value="0.04"/>
   <property name="RH_thigh_length" value="0.072"/>
   <property name="RH_tibia_length" value="0.11"/>
+  
+  <!-- radius -->
   <property name="base_clause_radius" value="0.015"/>
   <property name="thigh_radius" value="0.015"/>
   <property name="tibia_radius" value="0.015"/>
   <property name="appendix_radius" value="0.015"/>
+
+  <!-- mass -->
   <property name="base_clause_mass" value="0.072"/>
   <property name="thigh_mass" value="0.043"/>
   <property name="tibia_mass" value="0.033"/>
   <property name="appendix_mass" value="0.0001"/>
+
+  <!-- torque limit [Nm] -->
+  <!--<property name="base_clause_torque" value="0.176519736"/>
+  <property name="thigh_torque" value="0.176519736"/>
+  <property name="tibia_torque" value="0.176519736"/>-->
   <property name="base_clause_torque" value="10"/>
   <property name="thigh_torque" value="10"/>
   <property name="tibia_torque" value="10"/>
+
+  <!-- velocity limit [rad/s] -->
   <property name="base_clause_velocity" value="600"/>
   <property name="thigh_velocity" value="600"/>
   <property name="tibia_velocity" value="600"/>
+
 </robot>

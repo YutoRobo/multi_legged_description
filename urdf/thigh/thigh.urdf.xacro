@@ -5,12 +5,13 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/thigh/thigh.transmission.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/thigh/thigh.gazebo.xacro"/>
   
-  <xacro:macro name="thigh" params="prefix radius length mass *joint_origin *joint_axis">
-	<joint name="${prefix}_thigh_joint" type="continuous">
+  <xacro:macro name="thigh" params="prefix radius length mass torque velocity *joint_origin *joint_axis">
+	<joint name="${prefix}_thigh_joint" type="revolute">
 	  <insert_block name="joint_origin"/>
 	  <parent link="${prefix}_base_clause_link"/>
 	  <child link="${prefix}_thigh_link"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
+	  <limit lower="-180.0" upper="180.0" effort="${torque}" velocity="${velocity}" />
 	  <insert_block name="joint_axis"/>
 	</joint>
 	<link name="${prefix}_thigh_link">
