@@ -7,6 +7,8 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
+        - /TF1
+        - /Axes1
       Splitter Ratio: 0.5
     Tree Height: 846
   - Class: rviz/Selection
@@ -53,7 +55,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 1
+    - Alpha: 0.20000000298023224
       Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
@@ -62,6 +64,11 @@ Visualization Manager:
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
+        LF_appendix_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         LF_base_clause_link:
           Alpha: 1
           Show Axes: false
@@ -77,6 +84,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        LH_appendix_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         LH_base_clause_link:
           Alpha: 1
           Show Axes: false
@@ -88,6 +100,11 @@ Visualization Manager:
           Show Trail: false
           Value: true
         LH_tibia_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LM_appendix_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -108,6 +125,11 @@ Visualization Manager:
           Show Trail: false
           Value: true
         Link Tree Style: Links in Alphabetic Order
+        RF_appendix_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         RF_base_clause_link:
           Alpha: 1
           Show Axes: false
@@ -123,6 +145,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        RH_appendix_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         RH_base_clause_link:
           Alpha: 1
           Show Axes: false
@@ -134,6 +161,11 @@ Visualization Manager:
           Show Trail: false
           Value: true
         RH_tibia_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RM_appendix_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -169,18 +201,108 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: true
-      Marker Scale: 1
+        LF_appendix_link:
+          Value: true
+        LF_base_clause_link:
+          Value: true
+        LF_thigh_link:
+          Value: true
+        LF_tibia_link:
+          Value: true
+        LH_appendix_link:
+          Value: true
+        LH_base_clause_link:
+          Value: true
+        LH_thigh_link:
+          Value: true
+        LH_tibia_link:
+          Value: true
+        LM_appendix_link:
+          Value: true
+        LM_base_clause_link:
+          Value: true
+        LM_thigh_link:
+          Value: true
+        LM_tibia_link:
+          Value: true
+        RF_appendix_link:
+          Value: true
+        RF_base_clause_link:
+          Value: true
+        RF_thigh_link:
+          Value: true
+        RF_tibia_link:
+          Value: true
+        RH_appendix_link:
+          Value: true
+        RH_base_clause_link:
+          Value: true
+        RH_thigh_link:
+          Value: true
+        RH_tibia_link:
+          Value: true
+        RM_appendix_link:
+          Value: true
+        RM_base_clause_link:
+          Value: true
+        RM_thigh_link:
+          Value: true
+        RM_tibia_link:
+          Value: true
+        base_footprint:
+          Value: true
+        base_link:
+          Value: true
+      Marker Scale: 0.10000000149011612
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        base_footprint:
+          base_link:
+            LF_base_clause_link:
+              LF_thigh_link:
+                LF_tibia_link:
+                  LF_appendix_link:
+                    {}
+            LH_base_clause_link:
+              LH_thigh_link:
+                LH_tibia_link:
+                  LH_appendix_link:
+                    {}
+            LM_base_clause_link:
+              LM_thigh_link:
+                LM_tibia_link:
+                  LM_appendix_link:
+                    {}
+            RF_base_clause_link:
+              RF_thigh_link:
+                RF_tibia_link:
+                  RF_appendix_link:
+                    {}
+            RH_base_clause_link:
+              RH_thigh_link:
+                RH_tibia_link:
+                  RH_appendix_link:
+                    {}
+            RM_base_clause_link:
+              RM_thigh_link:
+                RM_tibia_link:
+                  RM_appendix_link:
+                    {}
       Update Interval: 0
+      Value: true
+    - Class: rviz/Axes
+      Enabled: false
+      Length: 1
+      Name: Axes
+      Radius: 0.10000000149011612
+      Reference Frame: <Fixed Frame>
       Value: false
   Enabled: true
   Global Options:
@@ -210,25 +332,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.208176851272583
+      Distance: 0.7365651726722717
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.10990100353956223
-        Y: -0.02149450033903122
-        Z: 0.26799100637435913
+        X: -0.10336098074913025
+        Y: -0.05798713490366936
+        Z: 0.1881522238254547
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.820399820804596
+      Pitch: 0.17540021240711212
       Target Frame: base_footprint
       Value: Orbit (rviz)
-      Yaw: 3.806865930557251
+      Yaw: 3.901867389678955
     Saved: ~
 Window Geometry:
   Displays:
@@ -247,4 +369,4 @@ Window Geometry:
     collapsed: true
   Width: 927
   X: 836
-  Y: 37
+  Y: 27

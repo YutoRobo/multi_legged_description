@@ -7,9 +7,9 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/appendix/appendix.urdf.xacro"/>
 
   <xacro:macro name="leg" params="prefix parent origin_xyz origin_rpy 
-                                  base_clause_radius base_clause_length base_clause_mass base_clause_torque base_clause_velocity
-                                  thigh_radius thigh_length thigh_mass thigh_torque thigh_velocity
-                                  tibia_radius tibia_length tibia_mass tibia_torque tibia_velocity
+                                  base_clause_radius base_clause_length base_clause_rpy base_clause_mass base_clause_torque base_clause_velocity
+                                  thigh_radius thigh_length thigh_rpy thigh_mass thigh_torque thigh_velocity
+                                  tibia_radius tibia_length tibia_rpy tibia_mass tibia_torque tibia_velocity
                                   appendix_radius appendix_mass">
     <!-- ===============  Link & Joint =============== -->
     <xacro:base_clause prefix="${prefix}" parent="${parent}" 
@@ -19,7 +19,7 @@
                                           torque="${base_clause_torque}"
                                           velocity="${base_clause_velocity}">
     <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
-    <axis xyz="1 0 0"/>
+    <axis xyz="0 0 1"/>
     </xacro:base_clause>
 
     <xacro:thigh prefix="${prefix}"
@@ -28,8 +28,8 @@
                  mass="${thigh_mass}"
                  torque="${thigh_torque}"
                  velocity="${thigh_velocity}">
-    <origin xyz="0.0 0.0 ${-base_clause_length}" rpy="0.0 0.0 0.0"/>
-    <axis xyz="0 1 0"/>
+    <origin xyz="${base_clause_length} 0.0 0.0" rpy="${thigh_rpy}"/>
+    <axis xyz="0 0 1"/>
     </xacro:thigh>
 
     <xacro:tibia prefix="${prefix}"
@@ -38,15 +38,15 @@
                  mass="${tibia_mass}"
                  torque="${tibia_torque}"
                  velocity="${tibia_velocity}">
-    <origin xyz="0.0 0.0 ${-thigh_length}" rpy="0.0 ${M_PI/2} 0.0"/>
-    <axis xyz="0 1 0"/>
+    <origin xyz="${thigh_length} 0.0 0.0" rpy="${tibia_rpy}"/>
+    <axis xyz="0 0 1"/>
     </xacro:tibia>
 
     <xacro:appendix prefix="${prefix}"
                     radius="${appendix_radius}"
                     mass="${appendix_mass}">
-    <origin xyz="0.0 0.0 ${-tibia_length}" rpy="0.0 0.0 0.0"/>
-    <axis xyz="0 1 0"/>
+    <origin xyz="${tibia_length} 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0 0 1"/>
     </xacro:appendix>
 
     <!-- ===============  Transmission =============== -->
