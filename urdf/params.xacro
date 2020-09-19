@@ -33,26 +33,25 @@
   <property name="base_clause_torque" value="10"/>
   <property name="thigh_torque" value="10"/>
   <property name="tibia_torque" value="10"/>
-  <property name="base_clause_velocity" value="600"/>
-  <property name="thigh_velocity" value="600"/>
-  <property name="tibia_velocity" value="600"/>
-
-  <property name="LF_base_clause_rpy" value="0.0 0.0 0.0"/>
-  <property name="LF_thigh_rpy" value="${-M_PI/2} ${M_PI/5} 0.0"/>
-  <property name="LF_tibia_rpy" value="${M_PI/9} ${-M_PI/8} 0.0"/>
-  <property name="LM_base_clause_rpy" value="0.0 0.0 0.0"/>
-  <property name="LM_thigh_rpy" value="${-M_PI/2} ${M_PI/5} 0.0"/>
-  <property name="LM_tibia_rpy" value="${M_PI/9} ${-M_PI/8} 0.0"/>
-  <property name="LH_base_clause_rpy" value="0.0 0.0 0.0"/>
-  <property name="LH_thigh_rpy" value="${-M_PI/2} ${M_PI/5} 0.0"/>
-  <property name="LH_tibia_rpy" value="${M_PI/9} ${-M_PI/8} 0.0"/>
-  <property name="RF_base_clause_rpy" value="0.0 0.0 0.0"/>
-  <property name="RF_thigh_rpy" value="${-M_PI/2} ${M_PI/5} 0.0"/>
-  <property name="RF_tibia_rpy" value="${M_PI/9} ${-M_PI/8} 0.0"/>
-  <property name="RM_base_clause_rpy" value="0.0 0.0 0.0"/>
-  <property name="RM_thigh_rpy" value="${-M_PI/2} ${M_PI/5} 0.0"/>
-  <property name="RM_tibia_rpy" value="${M_PI/9} ${-M_PI/8} 0.0"/>
-  <property name="RH_base_clause_rpy" value="0.0 0.0 0.0"/>
-  <property name="RH_thigh_rpy" value="${-M_PI/2} ${M_PI/5} 0.0"/>
-  <property name="RH_tibia_rpy" value="${M_PI/9} ${-M_PI/8} 0.0"/>
+  <property name="base_clause_velocity" value="100"/>
+  <property name="thigh_velocity" value="100"/>
+  <property name="tibia_velocity" value="100"/>
+  <property name="LF_base_clause_rpy" value="-0.3 0.0 1.5708"/>
+  <property name="LF_thigh_rpy" value="-1.5708 0.0 0.0"/>
+  <property name="LF_tibia_rpy" value="0.2 0.0 0.0"/>
+  <property name="LM_base_clause_rpy" value="0.0 0.0 1.5708"/>
+  <property name="LM_thigh_rpy" value="-1.5708 0.0 0.0"/>
+  <property name="LM_tibia_rpy" value="0.1 0.0 0.0"/>
+  <property name="LH_base_clause_rpy" value="0.3 0.0 1.5708"/>
+  <property name="LH_thigh_rpy" value="-1.5708 0.0 0.0"/>
+  <property name="LH_tibia_rpy" value="-0.2 0.0 0.0"/>
+  <property name="RF_base_clause_rpy" value="0.3 0.0 -1.5708"/>
+  <property name="RF_thigh_rpy" value="1.5708 0.0 0.0"/>
+  <property name="RF_tibia_rpy" value="-0.2 0.0 0.0"/>
+  <property name="RM_base_clause_rpy" value="0.0 0.0 -1.5708"/>
+  <property name="RM_thigh_rpy" value="1.5708 0.0 0.0"/>
+  <property name="RM_tibia_rpy" value="-0.1 0.0 0.0"/>
+  <property name="RH_base_clause_rpy" value="-0.4 0.0 -1.5708"/>
+  <property name="RH_thigh_rpy" value="1.5708 0.0 0.0"/>
+  <property name="RH_tibia_rpy" value="0.2 0.0 0.0"/>
 </robot>
