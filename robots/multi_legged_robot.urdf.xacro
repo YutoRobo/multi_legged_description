@@ -72,8 +72,8 @@
              appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
 	<xacro:leg prefix="RH" parent="base_link" origin_xyz="${-body_length*2/5} ${-body_width/2} ${-body_height/2-base_clause_radius/2}" origin_rpy="0.0 0.0 ${-M_PI/2}"
              base_clause_radius="${base_clause_radius}" base_clause_length="${RH_base_clause_length}" base_clause_rpy="${RH_base_clause_rpy}" base_clause_mass="${base_clause_mass}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
-             thigh_radius="${thigh_radius}" thigh_length="${RH_thigh_length}" thigh_rpy="${RM_thigh_rpy}" thigh_mass="${thigh_mass}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
-             tibia_radius="${tibia_radius}" tibia_length="${RH_tibia_length}" tibia_rpy="${RM_tibia_rpy}" tibia_mass="${tibia_mass}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${RH_thigh_length}" thigh_rpy="${RH_thigh_rpy}" thigh_mass="${thigh_mass}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${RH_tibia_length}" tibia_rpy="${RH_tibia_rpy}" tibia_mass="${tibia_mass}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
              appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
   
   <!-- =============== Gazebo =============== -->
