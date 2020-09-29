@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="coxa_trans" params="prefix">
+	<transmission name="${prefix}_coxa_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}_coxa_joint">
+      </joint>
+	</transmission>
+  </xacro:macro>
+  
+</robot>

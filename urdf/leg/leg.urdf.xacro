@@ -1,24 +1,29 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-
+  <xacro:include filename="$(find multi_legged_description)/urdf/coxa/coxa.urdf.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/base_clause/base_clause.urdf.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/thigh/thigh.urdf.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/tibia/tibia.urdf.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/appendix/appendix.urdf.xacro"/>
 
-  <xacro:macro name="leg" params="prefix parent origin_xyz origin_rpy 
+  <xacro:macro name="leg" params="prefix parent origin_xyz origin_rpy
                                   base_clause_radius base_clause_length base_clause_rpy base_clause_mass base_clause_torque base_clause_velocity
                                   thigh_radius thigh_length thigh_rpy thigh_mass thigh_torque thigh_velocity
                                   tibia_radius tibia_length tibia_rpy tibia_mass tibia_torque tibia_velocity
                                   appendix_radius appendix_mass">
     <!-- ===============  Link & Joint =============== -->
-    <xacro:base_clause prefix="${prefix}" parent="${parent}" 
+    <xacro:coxa prefix="${prefix}" parent="${parent}">
+    <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
+    <axis xyz="0 0 1"/>
+    </xacro:coxa>
+
+    <xacro:base_clause prefix="${prefix}"
                                           radius="${base_clause_radius}"
                                           length="${base_clause_length}"
                                           mass="${base_clause_mass}"
                                           torque="${base_clause_torque}"
                                           velocity="${base_clause_velocity}">
-    <origin xyz="${origin_xyz}" rpy="${base_clause_rpy}"/>
+    <origin xyz="0.0 0.0 0.0" rpy="${base_clause_rpy}"/>
     <axis xyz="0 0 1"/>
     </xacro:base_clause>
 
@@ -50,12 +55,14 @@
     </xacro:appendix>
 
     <!-- ===============  Transmission =============== -->
+    <xacro:coxa_trans prefix="${prefix}"/>
     <xacro:base_clause_trans prefix="${prefix}"/>
     <xacro:thigh_trans prefix="${prefix}"/>
     <xacro:tibia_trans prefix="${prefix}"/>
     <xacro:appendix_trans prefix="${prefix}"/>
 
     <!-- =============== Gazebo =============== -->
+    <xacro:coxa_gazebo prefix="${prefix}"/>
     <xacro:base_clause_gazebo prefix="${prefix}"/>
     <xacro:thigh_gazebo prefix="${prefix}"/>
     <xacro:tibia_gazebo prefix="${prefix}"/>
