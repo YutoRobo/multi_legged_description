@@ -10,7 +10,7 @@
       <material>Gazebo/Red</material>
     <sensor name='${prefix}_appendix_contact' type='contact'>
       <always_on>true</always_on>
-      <update_rate>100.0</update_rate>
+      <update_rate>1000.0</update_rate>
 	    <plugin name="${prefix}_appendix_plugin" filename="libcontact.so"/>
       <contact>
         <collision>appendix_collision</collision>
@@ -22,7 +22,7 @@
   </gazebo>
   <gazebo>
     <plugin name="${prefix}_ft_sensor" filename="libgazebo_ros_ft_sensor.so">
-      <updateRate>100.0</updateRate>
+      <updateRate>1000.0</updateRate>
       <topicName>${prefix}_ft_sensor_topic</topicName>
       <jointName>${prefix}_appendix_joint</jointName>
     </plugin>
