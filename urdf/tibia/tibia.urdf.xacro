@@ -11,7 +11,7 @@
 	  <parent link="${prefix}_thigh_link"/>
 	  <child link="${prefix}_tibia_link"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
-	  <limit lower="-180.0" upper="180.0" effort="${torque}" velocity="${velocity}" />
+	  <limit lower="${-M_PI}" upper="${M_PI}" effort="${torque}" velocity="${velocity}" />
 	  <insert_block name="joint_axis"/>
 	</joint>
 	<link name="${prefix}_tibia_link">
