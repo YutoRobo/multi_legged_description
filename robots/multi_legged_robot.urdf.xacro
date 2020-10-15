@@ -20,7 +20,7 @@
               height="${body_height}" 
               mass="${body_mass}">
   <!-- respawn point -->
-	<origin xyz="0 0 ${body_height+base_clause_radius/2+LM_tibia_length+appendix_radius+0.1}"/>
+	<origin xyz="0 0 ${body_height+base_clause_radius/2+LM_tibia_length+appendix_radius+0.01}"/>
   </xacro:base>
 
   <!--
