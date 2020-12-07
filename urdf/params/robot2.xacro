@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <property name="body_length" value="0.175"/>
+  <property name="body_width" value="0.125"/>
+  <property name="body_height" value="0.005"/>
+  <property name="body_mass" value="0.906"/>
+  <property name="LF_base_clause_length" value="0.0311400548483"/>
+  <property name="LF_thigh_length" value="0.0564781273255"/>
+  <property name="LF_tibia_length" value="0.0751285123339"/>
+  <property name="RF_base_clause_length" value="0.0311400548483"/>
+  <property name="RF_thigh_length" value="0.0564781273255"/>
+  <property name="RF_tibia_length" value="0.0751285123339"/>
+  <property name="LM_base_clause_length" value="0.0414559443076"/>
+  <property name="LM_thigh_length" value="0.0952939865671"/>
+  <property name="LM_tibia_length" value="0.0664860660713"/>
+  <property name="RM_base_clause_length" value="0.0414559443076"/>
+  <property name="RM_thigh_length" value="0.0952939865671"/>
+  <property name="RM_tibia_length" value="0.0664860660713"/>
+  <property name="LH_base_clause_length" value="0.0218991010743"/>
+  <property name="LH_thigh_length" value="0.058561804905"/>
+  <property name="LH_tibia_length" value="0.0618750567799"/>
+  <property name="RH_base_clause_length" value="0.0218991010743"/>
+  <property name="RH_thigh_length" value="0.058561804905"/>
+  <property name="RH_tibia_length" value="0.0618750567799"/>
+  <property name="base_clause_radius" value="0.015"/>
+  <property name="thigh_radius" value="0.015"/>
+  <property name="tibia_radius" value="0.015"/>
+  <property name="appendix_radius" value="0.015"/>
+  <property name="base_clause_mass" value="0.072"/>
+  <property name="thigh_mass" value="0.043"/>
+  <property name="tibia_mass" value="0.033"/>
+  <property name="appendix_mass" value="0.0001"/>
+  <property name="base_clause_torque" value="3"/>
+  <property name="thigh_torque" value="3"/>
+  <property name="tibia_torque" value="3"/>
+  <property name="base_clause_velocity" value="100"/>
+  <property name="thigh_velocity" value="100"/>
+  <property name="tibia_velocity" value="100"/>
+  <property name="F_base_clause_roll" value="0.163062555354"/>
+  <property name="F_base_clause_pitch" value="-0.467586657972"/>
+  <property name="F_base_clause_yaw" value="0.368776128707"/>
+  <property name="F_thigh_roll" value="-1.34008617682"/>
+  <property name="F_thigh_pitch" value="0.174432396794"/>
+  <property name="F_thigh_yaw" value="0.166002638042"/>
+  <property name="F_tibia_roll" value="0.0810325825549"/>
+  <property name="F_tibia_pitch" value="-0.0462749167781"/>
+  <property name="F_tibia_yaw" value="-0.24383583964"/>
+  <property name="M_base_clause_roll" value="0.108715415473"/>
+  <property name="M_base_clause_pitch" value="0.0677535260953"/>
+  <property name="M_base_clause_yaw" value="0.513459657514"/>
+  <property name="M_thigh_roll" value="-0.82361063168"/>
+  <property name="M_thigh_pitch" value="-0.611355329523"/>
+  <property name="M_thigh_yaw" value="-0.426215241148"/>
+  <property name="M_tibia_roll" value="0.0186421791843"/>
+  <property name="M_tibia_pitch" value="-0.146560905733"/>
+  <property name="M_tibia_yaw" value="0.37949607858"/>
+  <property name="H_base_clause_roll" value="0.295929360299"/>
+  <property name="H_base_clause_pitch" value="0.524366090771"/>
+  <property name="H_base_clause_yaw" value="0.218802400801"/>
+  <property name="H_thigh_roll" value="-1.72491382197"/>
+  <property name="H_thigh_pitch" value="-0.529529876361"/>
+  <property name="H_thigh_yaw" value="-0.0931272450051"/>
+  <property name="H_tibia_roll" value="0.524578068114"/>
+  <property name="H_tibia_pitch" value="-0.343113035557"/>
+  <property name="H_tibia_yaw" value="0.347548524481"/>
+  <property name="LF_base_clause_rpy" value="${F_base_clause_roll} ${F_base_clause_pitch} ${F_base_clause_yaw}"/>
+  <property name="LF_thigh_rpy" value="${F_thigh_roll} ${F_thigh_pitch} ${F_thigh_yaw}"/>
+  <property name="LF_tibia_rpy" value="${F_tibia_roll} ${F_tibia_pitch} ${F_tibia_yaw}"/>
+  <property name="LM_base_clause_rpy" value="${M_base_clause_roll} ${M_base_clause_pitch} ${M_base_clause_yaw}"/>
+  <property name="LM_thigh_rpy" value="${M_thigh_roll} ${M_thigh_pitch} ${M_thigh_yaw}"/>
+  <property name="LM_tibia_rpy" value="${M_tibia_roll} ${M_tibia_pitch} ${M_tibia_yaw}"/>
+  <property name="LH_base_clause_rpy" value="${H_base_clause_roll} ${H_base_clause_pitch} ${H_base_clause_yaw}"/>
+  <property name="LH_thigh_rpy" value="${H_thigh_roll} ${H_thigh_pitch} ${H_thigh_yaw}"/>
+  <property name="LH_tibia_rpy" value="${H_tibia_roll} ${H_tibia_pitch} ${H_tibia_yaw}"/>
+  <property name="RF_base_clause_rpy" value="${-F_base_clause_roll} ${F_base_clause_pitch} ${-F_base_clause_yaw}"/>
+  <property name="RF_thigh_rpy" value="${-F_thigh_roll} ${F_thigh_pitch} ${-F_thigh_yaw}"/>
+  <property name="RF_tibia_rpy" value="${-F_tibia_roll} ${F_tibia_pitch} ${-F_tibia_yaw}"/>
+  <property name="RM_base_clause_rpy" value="${-M_base_clause_roll} ${M_base_clause_pitch} ${-M_base_clause_yaw}"/>
+  <property name="RM_thigh_rpy" value="${-M_thigh_roll} ${M_thigh_pitch} ${-M_thigh_yaw}"/>
+  <property name="RM_tibia_rpy" value="${-M_tibia_roll} ${M_tibia_pitch} ${-M_tibia_yaw}"/>
+  <property name="RH_base_clause_rpy" value="${-H_base_clause_roll} ${H_base_clause_pitch} ${-H_base_clause_yaw}"/>
+  <property name="RH_thigh_rpy" value="${-H_thigh_roll} ${H_thigh_pitch} ${-H_thigh_yaw}"/>
+  <property name="RH_tibia_rpy" value="${-H_tibia_roll} ${H_tibia_pitch} ${-H_tibia_yaw}"/>
+  <property name="F_distance" value="0.1"/>
+  <property name="M_distance" value="0.1"/>
+  <property name="H_distance" value="0.1"/>
+</robot>

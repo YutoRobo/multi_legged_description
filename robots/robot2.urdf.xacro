@@ -3,7 +3,7 @@
 
   <xacro:include filename="$(find multi_legged_description)/urdf/base/base.urdf.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/leg/leg.urdf.xacro"/>
-  <xacro:include filename="$(find multi_legged_description)/urdf/params.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/params/robot2.xacro"/>
   
   <!--<link name="world"/>
   <joint name="fixed" type="fixed">
@@ -22,27 +22,6 @@
   <!-- respawn point -->
 	<origin xyz="0 0 ${body_height+base_clause_radius/2+LM_tibia_length+appendix_radius+0.01}"/>
   </xacro:base>
-
-  <!--
-  <property name="LF_base_clause_rpy" value="0.0 0.0 0.0"/>
-  <property name="LF_thigh_rpy" value="${-M_PI/2} 0.0 0.0"/>
-  <property name="LF_tibia_rpy" value="0.0 0.0 0.0"/>
-  <property name="LM_base_clause_rpy" value="0.0 0.0 0.0"/>
-  <property name="LM_thigh_rpy" value="${-M_PI/2} 0.0 0.0"/>
-  <property name="LM_tibia_rpy" value="0.0 0.0 0.0"/>
-  <property name="LH_base_clause_rpy" value="0.0 0.0 0.0"/>
-  <property name="LH_thigh_rpy" value="${-M_PI/2} 0.0 0.0"/>
-  <property name="LH_tibia_rpy" value="0.0 0.0 0.0"/>
-  <property name="RF_base_clause_rpy" value="0.0 0.0 0.0"/>
-  <property name="RF_thigh_rpy" value="${-M_PI/2} 0.0 0.0"/>
-  <property name="RF_tibia_rpy" value="0.0 0.0 0.0"/>
-  <property name="RM_base_clause_rpy" value="0.0 0.0 0.0"/>
-  <property name="RM_thigh_rpy" value="${-M_PI/2} 0.0 0.0"/>
-  <property name="RM_tibia_rpy" value="0.0 0.0 0.0"/>
-  <property name="RH_base_clause_rpy" value="0.0 0.0 0.0"/>
-  <property name="RH_thigh_rpy" value="${-M_PI/2} 0.0 0.0"/>
-  <property name="RH_tibia_rpy" value="0.0 0.0 0.0"/>
-  -->
 
   <!-- LEG -->
   <xacro:leg prefix="LF" parent="base_link" origin_xyz="${body_length*2/5} ${body_width/2} ${-body_height/2-base_clause_radius/2}" origin_rpy="0.0 0.0 ${M_PI/2}"

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<robot name="multi_legged_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find multi_legged_description)/urdf/base/base.urdf.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/leg/leg.urdf.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/params/robot10.xacro"/>
+  
+  <!--<link name="world"/>
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_footprint"/>
+  </joint>-->
+
+  <!-- ===============  Link & Joint =============== -->
+  <!-- Base -->
+  <link name="base_footprint"/>
+  <xacro:base parent="base_footprint" 
+              length="${body_length}" 
+              width="${body_width}" 
+              height="${body_height}" 
+              mass="${body_mass}">
+  <!-- respawn point -->
+	<origin xyz="0 0 ${body_height+base_clause_radius/2+LM_tibia_length+appendix_radius+0.01}"/>
+  </xacro:base>
+
+  <!-- LEG -->
+  <xacro:leg prefix="LF" parent="base_link" origin_xyz="${body_length*2/5} ${body_width/2} ${-body_height/2-base_clause_radius/2}" origin_rpy="0.0 0.0 ${M_PI/2}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${LF_base_clause_length}" base_clause_rpy="${LF_base_clause_rpy}" base_clause_mass="${base_clause_mass}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${LF_thigh_length}" thigh_rpy="${LF_thigh_rpy}" thigh_mass="${thigh_mass}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${LF_tibia_length}" tibia_rpy="${LF_tibia_rpy}" tibia_mass="${tibia_mass}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
+  <xacro:leg prefix="LM" parent="base_link" origin_xyz="0.0 ${body_width/2} ${-body_height/2-base_clause_radius/2}" origin_rpy="0.0 0.0 ${M_PI/2}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${LM_base_clause_length}" base_clause_rpy="${LM_base_clause_rpy}" base_clause_mass="${base_clause_mass}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${LM_thigh_length}" thigh_rpy="${LM_thigh_rpy}" thigh_mass="${thigh_mass}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${LM_tibia_length}" tibia_rpy="${LM_tibia_rpy}" tibia_mass="${tibia_mass}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
+	<xacro:leg prefix="LH" parent="base_link" origin_xyz="${-body_length*2/5} ${body_width/2} ${-body_height/2-base_clause_radius/2}" origin_rpy="0.0 0.0 ${M_PI/2}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${LH_base_clause_length}" base_clause_rpy="${LH_base_clause_rpy}" base_clause_mass="${base_clause_mass}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${LH_thigh_length}" thigh_rpy="${LH_thigh_rpy}" thigh_mass="${thigh_mass}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${LH_tibia_length}" tibia_rpy="${LH_tibia_rpy}" tibia_mass="${tibia_mass}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
+
+  <xacro:leg prefix="RF" parent="base_link" origin_xyz="${body_length*2/5} ${-body_width/2} ${-body_height/2-base_clause_radius/2}" origin_rpy="0.0 0.0 ${-M_PI/2}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${RF_base_clause_length}" base_clause_rpy="${RF_base_clause_rpy}" base_clause_mass="${base_clause_mass}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${RF_thigh_length}" thigh_rpy="${RF_thigh_rpy}" thigh_mass="${thigh_mass}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${RF_tibia_length}" tibia_rpy="${RF_tibia_rpy}" tibia_mass="${tibia_mass}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
+  <xacro:leg prefix="RM" parent="base_link" origin_xyz="0.0 ${-body_width/2} ${-body_height/2-base_clause_radius/2}" origin_rpy="0.0 0.0 ${-M_PI/2}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${RM_base_clause_length}" base_clause_rpy="${RM_base_clause_rpy}" base_clause_mass="${base_clause_mass}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${RM_thigh_length}" thigh_rpy="${RM_thigh_rpy}" thigh_mass="${thigh_mass}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${RM_tibia_length}" tibia_rpy="${RM_tibia_rpy}" tibia_mass="${tibia_mass}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
+	<xacro:leg prefix="RH" parent="base_link" origin_xyz="${-body_length*2/5} ${-body_width/2} ${-body_height/2-base_clause_radius/2}" origin_rpy="0.0 0.0 ${-M_PI/2}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${RH_base_clause_length}" base_clause_rpy="${RH_base_clause_rpy}" base_clause_mass="${base_clause_mass}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${RH_thigh_length}" thigh_rpy="${RH_thigh_rpy}" thigh_mass="${thigh_mass}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${RH_tibia_length}" tibia_rpy="${RH_tibia_rpy}" tibia_mass="${tibia_mass}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_mass="${appendix_mass}"/>
+  
+  <!-- =============== Gazebo =============== -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <!--<robotNamespace>/multi_legged_robot</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>-->
+    </plugin>
+  </gazebo>
+
+  <!-- Base -->
+  <xacro:base_gazebo/>
+
+  <!-- <xacro:base_clause_gazebo_control rate="25"/> -->
+
+
+</robot>
+
+  
