@@ -5,7 +5,7 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/thigh/thigh.transmission.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/thigh/thigh.gazebo.xacro"/>
   
-  <xacro:macro name="thigh" params="prefix radius length mass torque velocity *joint_origin *joint_axis">
+  <xacro:macro name="thigh" params="prefix radius length rho torque velocity *joint_origin *joint_axis">
 	<joint name="${prefix}_thigh_joint" type="revolute">
 	  <insert_block name="joint_origin"/>
 	  <parent link="${prefix}_base_clause_link"/>
@@ -29,7 +29,7 @@
 	  </collision>
 	  <inertial>
 		<origin xyz="${length/2} 0 0" rpy="0 ${M_PI/2} 0"/>
-		<cylinder_inertial mass="${mass}"
+		<cylinder_inertial mass="${rho * radius * radius * M_PI * length}"
 						   radius="${radius}" length="${length}"/>
 	  </inertial>
 	</link>

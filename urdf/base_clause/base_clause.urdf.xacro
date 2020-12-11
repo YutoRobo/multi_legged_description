@@ -5,7 +5,7 @@
   <xacro:include filename="$(find multi_legged_description)/urdf/base_clause/base_clause.transmission.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/base_clause/base_clause.gazebo.xacro"/>
   
-  <xacro:macro name="base_clause" params="prefix radius length mass torque velocity *joint_origin *joint_axis">
+  <xacro:macro name="base_clause" params="prefix radius length rho torque velocity *joint_origin *joint_axis">
 	<joint name="${prefix}_base_clause_joint" type="revolute">
 	  <insert_block name="joint_origin"/>
 	  <parent link="${prefix}_coxa_link"/>
@@ -14,6 +14,7 @@
 	  <limit lower="${-M_PI}" upper="${M_PI}" effort="${torque}" velocity="${velocity}" />
 	  <insert_block name="joint_axis"/>
 	</joint>
+
 	<link name="${prefix}_base_clause_link">
 	  <visual>
         <origin xyz="${length/2} 0 0" rpy="0 ${M_PI/2} 0"/>
@@ -29,7 +30,7 @@
 	  </collision>
 	  <inertial>
 		<origin xyz="${length/2} 0 0" rpy="0 ${M_PI/2} 0"/>
-		<cylinder_inertial mass="${mass}"
+		<cylinder_inertial mass="${rho * radius * radius * M_PI * length}"
 						   radius="${radius}" length="${length}"/>
 	  </inertial>
 	</link>
