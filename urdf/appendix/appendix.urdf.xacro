@@ -30,11 +30,11 @@
 	  </collision>
 	  <inertial>
 		<origin xyz="0 0 0" rpy="0 0 0"/>
-        <mass value="${rho * 0.75 * M_PI * radius * radius}"/>
+        <mass value="${rho * 0.75 * M_PI * radius * radius * radius}"/>
 		<inertia
-			ixx="${0.4 * rho * 0.75 * M_PI * radius * radius * radius * radius}" ixy="0.0" ixz="0.0"
-			iyy="${0.4 * rho * 0.75 * M_PI * radius * radius * radius * radius}" iyz="0.0"
-			izz="${0.4 * rho * 0.75 * M_PI * radius * radius * radius * radius}"/>
+			ixx="${0.4 * rho * 0.75 * M_PI * radius * radius *  radius * radius * radius}" ixy="0.0" ixz="0.0"
+			iyy="${0.4 * rho * 0.75 * M_PI * radius * radius *  radius * radius * radius}" iyz="0.0"
+			izz="${0.4 * rho * 0.75 * M_PI * radius * radius *  radius * radius * radius}"/>
       </inertial>
 	</link>
   </xacro:macro>
