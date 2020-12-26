@@ -3,7 +3,7 @@
 
   <xacro:include filename="$(find multi_legged_description)/urdf/base/base.urdf.xacro"/>
   <xacro:include filename="$(find multi_legged_description)/urdf/leg/leg.urdf.xacro"/>
-  <xacro:include filename="$(find multi_legged_description)/urdf/params/robot5.xacro"/>
+  <xacro:include filename="$(find multi_legged_description)/urdf/params/robot12.xacro"/>
   
   <!--<link name="world"/>
   <joint name="fixed" type="fixed">
